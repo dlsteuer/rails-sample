@@ -1,8 +1,13 @@
 # config valid only for current version of Capistrano
 lock '3.5.0'
 
-set :application, 'my_app_name'
-set :repo_url, 'git@example.com:me/my_repo.git'
+set :application, 'rails-sample'
+set :repo_url, '/Users/daniel/Development/rails-sample'
+set :branch, 'master'
+
+set :rollbar_token, '91c43ca68d004ba8a3ffa753ea29f570'
+set :rollbar_env, Proc.new { fetch :stage }
+set :rollbar_role, Proc.new { :app }
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
