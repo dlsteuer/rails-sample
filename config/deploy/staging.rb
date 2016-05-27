@@ -60,4 +60,7 @@
 #     # password: 'please use keys'
 #   }
 #puts YAML::dump(server('localhost'))
-server 'localhost'
+server 'dev',
+  roles: %w{app},
+  primary: true,
+  user: 'vagrant'

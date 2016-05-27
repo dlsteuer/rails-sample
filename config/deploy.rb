@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock '3.5.0'
 
-set :application, 'rails-sample'
+set :app, 'rails-sample'
 set :repo_url, '/Users/daniel/Development/rails-sample'
 set :branch, 'master'
 
@@ -49,8 +49,14 @@ namespace :deploy do
       # within release_path do
       #   execute :rake, 'cache:clear'
       # end
-      puts "test"
     end
   end
 
+end
+
+namespace :rollbar do
+  after 'rollbar:deploy', 'print_revision' do
+    puts "Revision: #{fetch :rollbar_revision}"
+    puts "App: #{fetch :app}"
+  end
 end
